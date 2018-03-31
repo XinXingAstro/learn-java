@@ -15,8 +15,8 @@ public class O32_3_ZhiPrintTree {
         if (pRoot == null) {
             return new ArrayList<ArrayList<Integer>>();
         }
-        Stack<TreeNode> stack1 = new Stack<TreeNode>();
-        Stack<TreeNode> stack2 = new Stack<TreeNode>();
+        Stack<TreeNode> stack1 = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
         ArrayList<ArrayList<Integer>> output = new ArrayList<ArrayList<Integer>>();
         TreeNode pNode = null;
         stack1.push(pRoot);
