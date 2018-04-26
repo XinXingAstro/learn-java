@@ -56,8 +56,8 @@ public class O19_MachPattern {
     }
 
     public static void main(String[] args) {
-        String str = "a";
-        String pattern = "a.";
+        String str = "";
+        String pattern = "c*c*";
         O19_MachPattern test = new O19_MachPattern();
         System.out.print(test.match(str.toCharArray(), pattern.toCharArray()));
     }

@@ -1,6 +1,9 @@
 package com.learn.testClasses;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class TestFile {
     public static void main(String[] args) {
@@ -15,5 +18,10 @@ public class TestFile {
         System.out.println(f2.isDirectory());//true
 
         System.out.println(f1.compareTo(f3));//-1
+        LinkedList list = new LinkedList();
+        for (Iterator it = list.iterator(); it.hasNext(); ) {
+            it.remove();
+        }
+        int[] j = new int[7];
     }
 }

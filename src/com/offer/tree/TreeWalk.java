@@ -189,7 +189,7 @@ public class TreeWalk {
         System.out.println();
         test.iterativeInorderWalk(root);
         System.out.println();
-        test.postorderWalk(root);
+        test.getSum(root);
         System.out.println();
         test.iterativePostorderWalk(root);*/
     }
