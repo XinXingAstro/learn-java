@@ -1,6 +1,12 @@
 package com.algorithm;
 
 public class Mergesort {
+    /**
+     * 自顶向下的排序算法
+     * @param nums
+     * @param start
+     * @param end
+     */
     public void mergesort(int[] nums, int start, int end) {
         if (start >= end) return;
         int mid = (start + end) >> 1;
@@ -28,6 +34,35 @@ public class Mergesort {
             } else {
                 nums[k] = R[j++];
             }
+        }
+    }
+
+    private static Comparable[] aux; //归并排序的辅助数组
+    /**
+     * 自第向上的排序算法
+     * @param nums
+     */
+    public void mergesort1(Comparable[] nums) {
+        // 需要进行logN次两两归并
+        int len = nums.length;
+        aux = new Comparable[len];
+        for (int size = 1; size < len; size <<= 1) { //size表示子数组长度
+            for (int start = 0; start < len - size; start += (size<<1)) {
+                merge1(nums, start, start + size - 1, Math.min(start + size + size - 1, len - 1));
+            }
+        }
+    }
+    public void merge1(Comparable[] nums, int start, int mid, int end) {
+        //将nums[start~mid]和nums[mid+1~hi]归并
+        int i = start, j = mid + 1;
+        for (int k = start; k <= end; k++) {
+            aux[k] = nums[k]; //将nums[start~end]复制到aux[start~end]
+        }
+        for (int k = start; k <= end; k++) {
+            if (i > mid) nums[k] = aux[j++];
+            else if (j > end) nums[k] = aux[i++];
+            else if (aux[j].compareTo(aux[i]) < 0) nums[k] = aux[j++];
+            else nums[k] = aux[i++];
         }
     }
 }

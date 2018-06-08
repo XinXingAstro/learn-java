@@ -1,8 +1,8 @@
 package com.leetcode.myCode;
 
 //57ms
-public class _2 {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+public class L2_AddTwoNumbers {
+    public ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
         ListNode l3 = null;
         ListNode l4 = null;
         ListNode l5 = null;
@@ -44,6 +44,31 @@ public class _2 {
         return l5;
     }
 
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        if (l1 == null || l2 == null) return null;
+        ListNode head = new ListNode(0);
+        ListNode pNode = head;
+        int carry = 0, sum = 0, x = 0, y = 0;
+        while (l1 != null || l2 != null || carry != 0) {
+            pNode.next = new ListNode(0);
+            x = l1 == null ? 0 : l1.val;
+            y = l2 == null ? 0 : l2.val;
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+            // sum = (x + y + carry) % 10;
+            sum = x + y + carry;
+            carry = sum >= 10 ? 1 : 0;
+            sum = sum >= 10 ? (sum - 10) : sum;
+            // carry = (x + y + carry) / 10;
+            pNode = pNode.next;
+            pNode.val = sum;
+
+        }
+        if (head.next == null) return head;
+        return head.next;
+
+    }
+
     public static void main(String[] args) {
         ListNode A = new ListNode(2);
         ListNode B = new ListNode(4);
@@ -57,7 +82,7 @@ public class _2 {
         D.next = E;
         E.next = F;
 
-        _2 inst = new _2();
-        inst.addTwoNumbers(A, D);
+        L2_AddTwoNumbers inst = new L2_AddTwoNumbers();
+        inst.addTwoNumbers1(A, D);
     }
 }
