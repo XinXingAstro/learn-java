@@ -19,11 +19,14 @@ public class Test {
 //        ss.selectionsort(nums1);
 //        Quicksort qs = new Quicksort();
 //        qs.quick3Way(nums1, 0, nums2.length-1);
-        Mergesort ms = new Mergesort();
-        ms.mergesort1(nums2);
-        for (int i : nums2) {
-            System.out.print(i);
-        }
+//        Mergesort ms = new Mergesort();
+//        ms.mergesort1(nums2);
+//        for (int i : nums2) {
+//            System.out.print(i);
+//        }
 //        System.out.print("\n" + cost);
+        char a = 'a';
+        a ^= 256;
+        System.out.println(a);
     }
 }
