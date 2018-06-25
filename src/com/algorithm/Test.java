@@ -11,5 +11,19 @@ public class Test {
         ArrayList<Integer> a = new ArrayList<>();
         a.add(1);*/
         System.out.println(1 << 1);
+
+    }
+    class Student {
+        private String name;
+        private int Id;
+
+        Student(String name, int Id) {
+            this.name = name;
+            this.Id = Id;
+        }
+    }
+
+    public void test() {
+        Student s = new Student("xx", 1);
     }
 }
