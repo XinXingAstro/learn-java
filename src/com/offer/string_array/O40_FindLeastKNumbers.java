@@ -19,7 +19,7 @@ import java.util.TreeSet;
  */
 public class O40_FindLeastKNumbers {
     /**
-     * 算法1
+     * 算法1：用快排的partition函数实现
      * @param input
      * @param k
      * @return
@@ -92,6 +92,52 @@ public class O40_FindLeastKNumbers {
         ArrayList<Integer> output = new ArrayList<Integer>();
         output.addAll(ts);
         return output;
+    }
+
+    /**
+     * 算法3：用最小堆实现
+     * @param args
+     */
+    private int heapsize;
+    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        if (input == null || input.length < k)
+            return ans;
+        heapsize = input.length;
+        buildHeap(input);
+        while (heapsize >= 1) {
+            swap1(input, 1, heapsize);
+            heapsize--;
+            maxHeapify(input, 1);
+        }
+        for (int i = 0; i < k; i++) {
+            ans.add(input[i]);
+            System.out.println(input[i]);
+        }
+        return ans;
+    }
+    public void buildHeap(int[] a) {
+        for (int i = heapsize>>1; i >= 1; i--) {
+            maxHeapify(a, i);
+        }
+    }
+    public void maxHeapify(int[] a, int i) {
+        int l = i << 1;
+        int r = l + 1;
+        int largest = i;
+        if (l <= heapsize && a[l-1] > a[largest-1])
+            largest = l;
+        if (r <= heapsize && a[r-1] > a[largest-1])
+            largest = r;
+        if (i != largest) {
+            swap1(a, i, largest);
+            maxHeapify(a, largest);
+        }
+    }
+    public void swap1(int[] a, int i, int j) {
+        int temp = a[i - 1];
+        a[i - 1] = a[j - 1];
+        a[j - 1] = temp;
     }
 
     public static void main(String[] args) {
